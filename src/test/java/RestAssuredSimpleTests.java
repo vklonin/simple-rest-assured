@@ -58,6 +58,15 @@ public class RestAssuredSimpleTests {
                 .statusCode(200)
                 .extract();
         assertThat(response.path("token").toString()).isEqualTo("QpwL5tke4Pnpja7X4");
-
+    }
+    @Test
+    void negativeLogin(){
+        given()
+                .contentType(JSON)
+                .body("")
+                .post("https://reqres.in/api/login")
+                .then()
+                .statusCode(400)
+                .assertThat();
     }
 }
